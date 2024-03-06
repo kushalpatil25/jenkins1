@@ -21,18 +21,7 @@ pipeline {
                 -Dsonar.login=sqp_285fcdc6cc46e3f7b004065de2f784296aebfe88
                 '''
             }
-        }
-
-    
-
-    
-      # stage('Test'){
-       #     steps {
-        #        withSonarQubeEnv(installationName: 'sonar123', credentialsId: 'creads') {
-         #           sh '/opt/maven/bin/mvn sonar:sonar'
-                #}
-            #}
-        #}     
+        }  
 
     }
 }
