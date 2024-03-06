@@ -11,16 +11,28 @@ pipeline {
                 sh '/opt/maven/bin/mvn clean package'
             }
         }
+        
+         stage('Test'){
+            steps {
+                sh '''
+                mvn clean verify sonar:sonar \
+                -Dsonar.projectKey=sonarqube-1 \
+                -Dsonar.host.url=http://3.80.45.129:9000 \
+                -Dsonar.login=sqp_285fcdc6cc46e3f7b004065de2f784296aebfe88
+                '''
+            }
+        }
+
     
 
     
-       stage('Test'){
-            steps {
-                withSonarQubeEnv(installationName: 'sonar123', credentialsId: 'creads') {
-                    sh '/opt/maven/bin/mvn sonar:sonar'
-                }
-            }
-        }     
+      # stage('Test'){
+       #     steps {
+        #        withSonarQubeEnv(installationName: 'sonar123', credentialsId: 'creads') {
+         #           sh '/opt/maven/bin/mvn sonar:sonar'
+                #}
+            #}
+        #}     
 
     }
 }
